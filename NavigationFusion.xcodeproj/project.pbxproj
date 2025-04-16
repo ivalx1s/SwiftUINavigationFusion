@@ -6,9 +6,56 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		725557BA2DB04E4100E4C4E9 /* FusionCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 725557B42DB04E4100E4C4E9 /* FusionCore.framework */; };
+		725557BB2DB04E4100E4C4E9 /* FusionCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 725557B42DB04E4100E4C4E9 /* FusionCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		725557B82DB04E4100E4C4E9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 725557962DB04E2200E4C4E9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 725557B32DB04E4100E4C4E9;
+			remoteInfo = FusionCore;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		725557C02DB04E4100E4C4E9 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				725557BB2DB04E4100E4C4E9 /* FusionCore.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		7255579E2DB04E2200E4C4E9 /* NavigationFusion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NavigationFusion.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		725557B42DB04E4100E4C4E9 /* FusionCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FusionCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		725557C82DB04E9300E4C4E9 /* Exceptions for "FusionCore" folder in "FusionCore" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				NavHost.swift,
+			);
+			target = 725557B32DB04E4100E4C4E9 /* FusionCore */;
+		};
+		725557C92DB04FE400E4C4E9 /* Exceptions for "FusionCore" folder in "NavigationFusion" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				NavHost.swift,
+			);
+			target = 7255579D2DB04E2200E4C4E9 /* NavigationFusion */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		725557A02DB04E2200E4C4E9 /* NavigationFusion */ = {
@@ -16,10 +63,27 @@
 			path = NavigationFusion;
 			sourceTree = "<group>";
 		};
+		725557C22DB04E7F00E4C4E9 /* FusionCore */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				725557C92DB04FE400E4C4E9 /* Exceptions for "FusionCore" folder in "NavigationFusion" target */,
+				725557C82DB04E9300E4C4E9 /* Exceptions for "FusionCore" folder in "FusionCore" target */,
+			);
+			path = FusionCore;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		7255579B2DB04E2200E4C4E9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				725557BA2DB04E4100E4C4E9 /* FusionCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		725557B12DB04E4100E4C4E9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -34,6 +98,7 @@
 			children = (
 				725557A02DB04E2200E4C4E9 /* NavigationFusion */,
 				7255579F2DB04E2200E4C4E9 /* Products */,
+				725557C22DB04E7F00E4C4E9 /* FusionCore */,
 			);
 			sourceTree = "<group>";
 		};
@@ -41,11 +106,22 @@
 			isa = PBXGroup;
 			children = (
 				7255579E2DB04E2200E4C4E9 /* NavigationFusion.app */,
+				725557B42DB04E4100E4C4E9 /* FusionCore.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		725557AF2DB04E4100E4C4E9 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		7255579D2DB04E2200E4C4E9 /* NavigationFusion */ = {
@@ -55,13 +131,16 @@
 				7255579A2DB04E2200E4C4E9 /* Sources */,
 				7255579B2DB04E2200E4C4E9 /* Frameworks */,
 				7255579C2DB04E2200E4C4E9 /* Resources */,
+				725557C02DB04E4100E4C4E9 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				725557B92DB04E4100E4C4E9 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				725557A02DB04E2200E4C4E9 /* NavigationFusion */,
+				725557C22DB04E7F00E4C4E9 /* FusionCore */,
 			);
 			name = NavigationFusion;
 			packageProductDependencies = (
@@ -69,6 +148,26 @@
 			productName = NavigationFusion;
 			productReference = 7255579E2DB04E2200E4C4E9 /* NavigationFusion.app */;
 			productType = "com.apple.product-type.application";
+		};
+		725557B32DB04E4100E4C4E9 /* FusionCore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 725557BD2DB04E4100E4C4E9 /* Build configuration list for PBXNativeTarget "FusionCore" */;
+			buildPhases = (
+				725557AF2DB04E4100E4C4E9 /* Headers */,
+				725557B02DB04E4100E4C4E9 /* Sources */,
+				725557B12DB04E4100E4C4E9 /* Frameworks */,
+				725557B22DB04E4100E4C4E9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FusionCore;
+			packageProductDependencies = (
+			);
+			productName = FusionCore;
+			productReference = 725557B42DB04E4100E4C4E9 /* FusionCore.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -82,6 +181,10 @@
 				TargetAttributes = {
 					7255579D2DB04E2200E4C4E9 = {
 						CreatedOnToolsVersion = 16.2;
+					};
+					725557B32DB04E4100E4C4E9 = {
+						CreatedOnToolsVersion = 16.2;
+						LastSwiftMigration = 1620;
 					};
 				};
 			};
@@ -100,12 +203,20 @@
 			projectRoot = "";
 			targets = (
 				7255579D2DB04E2200E4C4E9 /* NavigationFusion */,
+				725557B32DB04E4100E4C4E9 /* FusionCore */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		7255579C2DB04E2200E4C4E9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		725557B22DB04E4100E4C4E9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -122,7 +233,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		725557B02DB04E4100E4C4E9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		725557B92DB04E4100E4C4E9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 725557B32DB04E4100E4C4E9 /* FusionCore */;
+			targetProxy = 725557B82DB04E4100E4C4E9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		725557AA2DB04E2400E4C4E9 /* Debug */ = {
@@ -302,6 +428,81 @@
 			};
 			name = Release;
 		};
+		725557BE2DB04E4100E4C4E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = V8V53456PB;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = dev.iv.FusionCore;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		725557BF2DB04E4100E4C4E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = V8V53456PB;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = dev.iv.FusionCore;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -319,6 +520,15 @@
 			buildConfigurations = (
 				725557AD2DB04E2400E4C4E9 /* Debug */,
 				725557AE2DB04E2400E4C4E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		725557BD2DB04E4100E4C4E9 /* Build configuration list for PBXNativeTarget "FusionCore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				725557BE2DB04E4100E4C4E9 /* Debug */,
+				725557BF2DB04E4100E4C4E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
