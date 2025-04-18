@@ -136,6 +136,19 @@ struct DetailView: View {
     
     var body: some View {
         VStack(spacing: 16) {
+            Button("Open sheet") {
+                navigator.presentSheet { nav in
+                    SheetContent(navigator: nav)
+                }
+            }
+            Button("Open full‑size sheet") {
+                navigator.presentSheet(
+                    detents: [.large()],
+                    prefersGrabberVisible: true
+                ) { nav in
+                    SheetContent(navigator: nav)
+                }
+            }
             Button("Pop")        { navigator.pop() }
             Button("Pop 2")      { navigator.pop(levels: 2) }
             Button("Pop 20 or to root")      { navigator.pop(levels: 20) }
