@@ -82,6 +82,10 @@ struct SheetContent: View {
             Button("Push detail from sheet") {
                 navigator.push(DetailView(navigator: navigator))
             }
+            
+            Button("Push deep view & dismiss there") {
+                navigator.push(DeepView(navigator: navigator))
+            }
         }
         .padding()
         .navigationTitle("Sheet")
@@ -103,9 +107,27 @@ struct CoverContent: View {
             Button("Push detail from cover") {
                 navigator.push(DetailView(navigator: navigator))
             }
+            
+            Button("Push deep view & dismiss there") {
+                navigator.push(DeepView(navigator: navigator))
+            }
         }
         .padding()
         .navigationTitle("Cover")
+    }
+}
+
+// MARK: – Demonstrates dismissing from deep in the stack
+struct DeepView: View {
+    let navigator: Navigator
+    
+    var body: some View {
+        VStack(spacing: 16) {
+            Text("Deep inside 🚀")
+            Button("Dismiss modal") { navigator.dismiss() }
+        }
+        .padding()
+        .navigationTitle("Deep")
     }
 }
 

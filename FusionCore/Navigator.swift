@@ -100,10 +100,17 @@ public struct Navigator {
         presentFullScreen(animated: animated) { _ in view }
     }
     
-    /// Dismisses the currently presented modal (if any).
+    /// Dismisses the modal (sheet or full‑screen cover) that this `Navigator`
+    /// belongs to, no matter how deep the current view is in the stack.
     @MainActor
     public func dismiss(animated: Bool = true, completion: (() -> Void)? = nil) {
-        topPresenter?.dismiss(animated: animated, completion: completion)
+        // If we have a nav stack, dismiss *it* – that’s the modal root.
+        if let nav = resolveNav() {
+            nav.dismiss(animated: animated, completion: completion)
+        } else {
+            // Fallback: dismiss whatever is currently presented.
+            topPresenter?.dismiss(animated: animated, completion: completion)
+        }
     }
     
     // ──────────────────────────────────────────────
