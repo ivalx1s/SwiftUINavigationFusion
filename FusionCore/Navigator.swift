@@ -82,21 +82,7 @@ public struct Navigator {
         
         topPresenter?.present(sheetNav, animated: animated)
     }
-    
-    /// Legacy overload – still available, but now wraps the supplied
-    /// view inside its own nav‑stack so push/pop stay within the sheet.
-    @MainActor
-    public func presentSheet<V: View>(
-        _ view: V,
-        detents: [UISheetPresentationController.Detent]? = nil,
-        prefersGrabberVisible grabber: Bool = false,
-        animated: Bool = true
-    ) {
-        presentSheet(detents: detents,
-                     prefersGrabberVisible: grabber,
-                     animated: animated) { _ in view }
-    }
-    
+
     /// Presents content full‑screen, wrapped in its own `UINavigationController`.
     /// Subsequent `push`/`pop` calls affect only that cover’s stack.
     @MainActor
@@ -114,15 +100,6 @@ public struct Navigator {
         topPresenter?.present(coverNav, animated: animated)
     }
     
-    /// Legacy overload – keeps the old signature but now provides its own
-    /// navigation stack so that push/pop remain local to the cover.
-    @MainActor
-    public func presentFullScreen<V: View>(
-        _ view: V,
-        animated: Bool = true
-    ) {
-        presentFullScreen(animated: animated) { _ in view }
-    }
     
     /// Dismisses the modal (sheet or full‑screen cover) that this `Navigator`
     /// belongs to, no matter how deep the current view is in the stack.

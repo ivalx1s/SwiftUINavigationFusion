@@ -38,7 +38,8 @@ struct HomeView: View {
                 }
             }
             
-            Divider().padding(.vertical, 8)
+            Divider()
+                .padding(.vertical, 8)
             
             // ── Full‑screen cover demos ─────────────────────────
             Group {
