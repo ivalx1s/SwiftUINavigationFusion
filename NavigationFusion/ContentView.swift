@@ -1,17 +1,6 @@
 import FusionCore
 import SwiftUI
 
-@main
-struct SampleApp: App {
-    var body: some Scene {
-        WindowGroup {
-            Navigation { navigator in
-                HomeView(navigator: navigator)
-            }
-        }
-    }
-}
-
 struct HomeView: View {
     let navigator: Navigator
     
