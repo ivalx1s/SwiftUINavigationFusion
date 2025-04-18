@@ -14,7 +14,7 @@ public struct Navigation<Root: View>: UIViewControllerRepresentable {
 
     public func makeUIViewController(context: Context) -> UIViewController {
         let nav = UINavigationController()
-        let navigator = Navigator(resolveNav: { nav })
+        let navigator = Navigator(resolveNav: { [weak nav] in nav })
         
         let rootVC = UIHostingController(rootView: rootBuilder(navigator))
         nav.viewControllers = [rootVC]

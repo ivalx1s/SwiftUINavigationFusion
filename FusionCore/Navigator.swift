@@ -68,7 +68,7 @@ public struct Navigator {
     ) {
         // 1. Build an isolated nav‑stack for the sheet
         let sheetNav = UINavigationController()
-        let sheetNavigator = Navigator(resolveNav: { sheetNav })
+        let sheetNavigator = Navigator(resolveNav: { [weak sheetNav] in sheetNav })
         
         // 2. Insert caller’s content as the root
         let rootVC = UIHostingController(rootView: content(sheetNavigator))
@@ -91,7 +91,7 @@ public struct Navigator {
         @ViewBuilder content: (Navigator) -> V
     ) {
         let coverNav = UINavigationController()
-        let coverNavigator = Navigator(resolveNav: { coverNav })
+        let coverNavigator = Navigator(resolveNav: { [weak coverNav] in coverNav })
         
         let rootVC = UIHostingController(rootView: content(coverNavigator))
         coverNav.viewControllers = [rootVC]
