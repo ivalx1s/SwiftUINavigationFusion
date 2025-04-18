@@ -14,21 +14,98 @@ struct SampleApp: App {
 
 struct HomeView: View {
     let navigator: Navigator
-    @State private var nextId = 1
+    
+    var body: some View {
+        VStack(spacing: 24) {
+            
+            // ── Sheet demos ─────────────────────────────────────
+            Group {
+                Text("Sheets").font(.headline)
+                
+                Button("Sheet – medium/large") {
+                    navigator.presentSheet { nav in
+                        SheetContent(navigator: nav)
+                    }
+                }
+                
+                Button("Sheet – custom large (grabber)") {
+                    navigator.presentSheet(
+                        detents: [.large()],
+                        prefersGrabberVisible: true
+                    ) { nav in
+                        SheetContent(navigator: nav)
+                    }
+                }
+            }
+            
+            Divider().padding(.vertical, 8)
+            
+            // ── Full‑screen cover demos ─────────────────────────
+            Group {
+                Text("Full‑screen Covers").font(.headline)
+                
+                Button("Open cover") {
+                    navigator.presentFullScreen { nav in
+                        CoverContent(navigator: nav)
+                    }
+                }
+            }
+            
+            Divider().padding(.vertical, 8)
+            
+            // ── Navigation push demo ────────────────────────────
+            Group {
+                Text("Navigation Push").font(.headline)
+                
+                Button("Push detail") {
+                    navigator.push(DetailView(navigator: navigator))
+                }
+            }
+        }
+        .padding()
+        .navigationTitle("Home")
+    }
+}
+
+// MARK: – Demo content shown in a sheet
+struct SheetContent: View {
+    let navigator: Navigator
     
     var body: some View {
         VStack(spacing: 16) {
-            Button("Push detail") {
-                navigator.push(DetailView(navigator: navigator))
-                nextId += 1
+            Text("This is a sheet 🎉")
+            
+            Button("Dismiss sheet") {
+                navigator.dismiss()
             }
             
-            Button("Open settings") {
-                navigator.push(SettingsView(navigator: navigator))
+            Button("Push detail from sheet") {
+                navigator.push(DetailView(navigator: navigator))
             }
         }
-        .navigationTitle("Home")
         .padding()
+        .navigationTitle("Sheet")
+    }
+}
+
+// MARK: – Demo content shown full‑screen
+struct CoverContent: View {
+    let navigator: Navigator
+    
+    var body: some View {
+        VStack(spacing: 16) {
+            Text("This is a full‑screen cover 🖥️")
+            
+            Button("Dismiss cover") {
+                navigator.dismiss()
+            }
+            
+            Button("Push detail from cover") {
+                navigator.push(DetailView(navigator: navigator))
+            }
+        }
+        .padding()
+        .navigationTitle("Cover")
     }
 }
 
@@ -51,7 +128,8 @@ struct SettingsView: View {
     var body: some View {
         VStack(spacing: 16) {
             Text("Settings")
-            Button("Back") { navigator.pop() }
+            Button("Dismiss") { navigator.dismiss() }
+            Button("Pop") { navigator.pop() }
         }
         .navigationTitle("Settings")
         .padding()
