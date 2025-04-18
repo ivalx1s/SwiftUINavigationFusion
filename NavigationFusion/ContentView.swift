@@ -137,6 +137,8 @@ struct DetailView: View {
     var body: some View {
         VStack(spacing: 16) {
             Button("Pop")        { navigator.pop() }
+            Button("Pop 2")      { navigator.pop(levels: 2) }
+            Button("Pop 20 or to root")      { navigator.pop(levels: 20) }
             Button("Pop to root"){ navigator.popToRoot() }
         }
         .navigationTitle("Detail")

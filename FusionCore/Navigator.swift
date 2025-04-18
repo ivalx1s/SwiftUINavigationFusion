@@ -28,6 +28,30 @@ public struct Navigator {
         resolveNav()?.popToRootViewController(animated: animated)
     }
     
+    /// Pops `levels` view‑controllers off the current navigation stack.
+    /// - Parameters:
+    ///   - levels:   How many view‑controllers to remove. Values ≤ 0 are ignored.
+    ///   - animated: Whether the pop is animated.
+    ///
+    /// If *levels* is greater than or equal to the number of
+    /// view‑controllers above the root, this falls back to `popToRoot`.
+    @MainActor
+    public func pop(levels: Int, animated: Bool = true) {
+        guard levels > 0,                     // nothing to do for 0 / negatives
+              let nav = resolveNav() else { return }
+        
+        let stack = nav.viewControllers
+        let depth = stack.count
+        guard depth > 1 else { return }       // already at root
+        
+        if levels >= depth - 1 {
+            nav.popToRootViewController(animated: animated)
+        } else {
+            let target = stack[depth - levels - 1]
+            nav.popToViewController(target, animated: animated)
+        }
+    }
+    
     // ──────────────────────────────────────────────
     // MARK: Modal helpers
     // ──────────────────────────────────────────────
