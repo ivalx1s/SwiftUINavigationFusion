@@ -35,7 +35,7 @@ public struct Navigator {
 
 // MARK: – NavHost (UIKit only)
 
-public struct NavHost<Root: View>: UIViewControllerRepresentable {
+public struct Navigation<Root: View>: UIViewControllerRepresentable {
     private let rootBuilder: (Navigator) -> Root
     
     /// Creates a `NavHost` that embeds the given SwiftUI view hierarchy

@@ -5,7 +5,7 @@ import SwiftUI
 struct SampleApp: App {
     var body: some Scene {
         WindowGroup {
-            NavHost { navigator in
+            Navigation { navigator in
                 HomeView(navigator: navigator)
             }
         }
