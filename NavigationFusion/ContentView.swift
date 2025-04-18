@@ -1,46 +1,30 @@
 import FusionCore
 import SwiftUI
 
-// MARK: - Route model ---------------------------------------------
-
-enum AppRoute: Hashable {
-    case home
-    case detail(id: Int)
-    case settings
-}
-
-// MARK: - Root scene ----------------------------------------------
-
 @main
 struct SampleApp: App {
     var body: some Scene {
         WindowGroup {
-            NavHost<AppRoute, HomeView>(strategy: .uikit) {
-                HomeView()
+            NavHost { navigator in
+                HomeView(navigator: navigator)
             }
         }
     }
 }
 
-// MARK: - Home -----------------------------------------------------
-
 struct HomeView: View {
+    let navigator: Navigator
     @State private var nextId = 1
-    @Environment(\.anyNavigator) private var nav       // use anyNavigator
     
     var body: some View {
         VStack(spacing: 16) {
             Button("Push detail") {
-                nav.push(
-                    DetailView(id: nextId),
-                    route: AppRoute.detail(id: nextId)
-                )
+                navigator.push(DetailView(navigator: navigator))
                 nextId += 1
             }
             
             Button("Open settings") {
-                nav.push(SettingsView(),
-                         route: AppRoute.settings)
+                navigator.push(SettingsView(navigator: navigator))
             }
         }
         .navigationTitle("Home")
@@ -48,33 +32,26 @@ struct HomeView: View {
     }
 }
 
-// MARK: - Detail ---------------------------------------------------
-
 struct DetailView: View {
-    let id: Int
-    @Environment(\.anyNavigator) private var nav
+    let navigator: Navigator
     
     var body: some View {
         VStack(spacing: 16) {
-            Text("Detail \(id)")
-            
-            Button("Pop")        { nav.pop() }
-            Button("Pop to root"){ nav.popToRoot() }
+            Button("Pop")        { navigator.pop() }
+            Button("Pop to root"){ navigator.popToRoot() }
         }
         .navigationTitle("Detail")
         .padding()
     }
 }
 
-// MARK: - Settings -------------------------------------------------
-
 struct SettingsView: View {
-    @Environment(\.anyNavigator) private var nav
+    let navigator: Navigator
     
     var body: some View {
         VStack(spacing: 16) {
             Text("Settings")
-            Button("Back") { nav.pop() }
+            Button("Back") { navigator.pop() }
         }
         .navigationTitle("Settings")
         .padding()
